@@ -1,0 +1,171 @@
+
+<div class=" content">
+  <div class="row">
+    <div class="col-lg-6">
+      <h3>Óbitos CID10</h3>
+    </div>
+    <div class="col-lg-6 text-right">
+      <label for="cars" [ngStyle]="{ color: '#fff', 'margin-right': '20px' }">Ano:</label>
+      <select
+        name="cars"
+        id="cars"
+        [ngStyle]="{ 'margin-right': '20px', width: '100px', 'text-align': 'center' }"
+      >
+        <option value="2019">2019</option>
+      </select>
+
+      <label for="cars" [ngStyle]="{ color: '#fff', 'margin-right': '20px' }">Estado:</label>
+      <select
+        name="cars"
+        id="cars"
+        [ngStyle]="{ 'margin-right': '20px', width: '150px' }"
+      >
+        <option value="roraima">Roraima</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Obitos por Mes -->
+  <div class=" row">
+    <div class=" col-12">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <div class=" row">
+            <div class=" col-sm-6 text-left">
+              <h5 class=" card-category">Total de Óbitos</h5>
+              <h2 class=" card-title">Óbitos por mes</h2>
+            </div>
+          </div>
+        </div>
+        <div class=" card-body">
+          <div class=" chart-area">
+            <canvas id="obitos-por-mes"> </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class=" row">
+    <!-- Obitos por Idade -->
+    <div class=" col-lg-4">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h5 class=" card-category">Óbitos por Idade</h5>
+          <h3 class=" card-title">
+            <i class=" tim-icons icon-calendar-60 text-danger-states"> </i>
+          </h3>
+        </div>
+        <div class=" card-body">
+          <div class=" chart-area">
+            <canvas id="obitos-por-idade"> </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Obitos por Genero -->
+    <div class=" col-lg-4">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h5 class=" card-category">Óbitos por Genero</h5>
+          <h3 class=" card-title">
+            <i class=" tim-icons icon-tie-bow text-info"> </i>
+          </h3>
+        </div>
+        <div class=" card-body">
+          <div class=" chart-area">
+            <canvas id="obitos-por-genero"> </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Obitos por Raça -->
+    <div class=" col-lg-4">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h5 class=" card-category">Óbitos por Raça</h5>
+          <h3 class=" card-title">
+            <i class=" tim-icons icon-single-02 text-success"> </i>
+          </h3>
+        </div>
+        <div class=" card-body">
+          <div class=" chart-area">
+            <canvas id="obitos-por-raca"> </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Tabelas -->
+
+  <div class=" row">
+    <div class=" col-lg-12 col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Óbitos por Município</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>Código</th>
+                  <th>Município</th>
+                  <th class=" text-center">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let obito of obitosPorMunicipio">
+                  <td>{{ obito.codigoMunicipio }}</td>
+                  <td>{{ obito.municipio }}</td>
+                  <td class=" text-center">{{ obito.totalObitos }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Casos COVID Por Municipio-->
+
+  <div class=" row">
+    <div class=" col-lg-12 col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Casos de COVID por Município</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>Código</th>
+                  <th>Município</th>
+                  <th class=" text-center">Total de Leitos</th>
+                  <th class=" text-center">Total Casos COVID</th>
+                  <th class=" text-center">Zona</th>
+                  <th class=" text-center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let caso of casosPorMunicipio">
+                  <td>{{ caso.codigoMunicipio }}</td>
+                  <td>{{ caso.municipio }}</td>
+                  <td class=" text-center">{{ caso.totalLeitos }}</td>
+                  <td class=" text-center">{{ caso.totalCasosCovid }}</td>
+                  <td class=" text-center">{{ caso.zonaIdentificada }}</td>
+                  <td class=" text-center">
+                    <div class="covid-color" [ngStyle]="caso.style">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
